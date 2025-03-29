@@ -7,9 +7,13 @@ import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 import HeroSection from "@/components/shared/hero";
+import PricingSection from "@/components/shared/pricing";
 
 export default function Home() {
   return (
-    <HeroSection />
+    <>
+      <HeroSection />
+      <PricingSection/>
+    </>
   );
 }
