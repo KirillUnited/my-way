@@ -4,10 +4,9 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'Главная', href: '#' },
+  { name: 'Цены', href: '#' },
+  { name: 'О нас', href: '#' },
 ]
 
 export default function HeroSection() {
