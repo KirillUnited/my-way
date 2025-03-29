@@ -4,59 +4,37 @@ import clsx from 'clsx'
 import { useState } from 'react'
 
 const frequencies = [
-  { value: 'monthly', label: 'Monthly', priceSuffix: '/month' },
-  { value: 'annually', label: 'Annually', priceSuffix: '/year' },
+  { value: 'monthly', label: 'На месяц', priceSuffix: '/На месяц' },
+  { value: 'annually', label: 'На год', priceSuffix: '/На год' },
 ]
 const tiers = [
   {
-    name: 'Hobby',
-    id: 'tier-hobby',
+    name: 'Пакет XL',
+    id: 'tier-xl',
     href: '#',
     price: { monthly: '$19', annually: '$199' },
-    description: 'The essentials to provide your best work for clients.',
-    features: ['5 products', 'Up to 1,000 subscribers', 'Basic analytics'],
+    description: 'Максимальный пакет услуг для комплексного ухода за телом с профессиональным подходом и гарантированным результатом.',
+    features: ['ноги полностью', 'руки полностью', 'подмышки', 'глубокое бикини', 'линия живота'],
     mostPopular: false,
   },
   {
-    name: 'Freelancer',
-    id: 'tier-freelancer',
+    name: 'Пакет L',
+    id: 'tier-l',
     href: '#',
-    price: { monthly: '$29', annually: '$299' },
-    description: 'The essentials to provide your best work for clients.',
-    features: ['5 products', 'Up to 1,000 subscribers', 'Basic analytics', '48-hour support response time'],
-    mostPopular: false,
-  },
-  {
-    name: 'Startup',
-    id: 'tier-startup',
-    href: '#',
-    price: { monthly: '$59', annually: '$599' },
-    description: 'A plan that scales with your rapidly growing business.',
-    features: [
-      '25 products',
-      'Up to 10,000 subscribers',
-      'Advanced analytics',
-      '24-hour support response time',
-      'Marketing automations',
-    ],
+    price: { monthly: '$17', annually: '$179' },
+    description: 'Комплексный пакет для полного ухода за телом с максимальным комфортом и эффективностью.',
+    features: ['ноги полностью', 'руки полностью', 'подмышки', 'глубокое бикини', 'линия живота'],
     mostPopular: true,
   },
   {
-    name: 'Enterprise',
-    id: 'tier-enterprise',
+    name: 'Пакет M',
+    id: 'tier-M',
     href: '#',
-    price: { monthly: '$99', annually: '$999' },
-    description: 'Dedicated support and infrastructure for your company.',
-    features: [
-      'Unlimited products',
-      'Unlimited subscribers',
-      'Advanced analytics',
-      '1-hour, dedicated support response time',
-      'Marketing automations',
-      'Custom reporting tools',
-    ],
+    price: { monthly: '$12', annually: '$172' },
+    description: 'Оптимальный пакет услуг для эффективного ухода за телом с профессиональным подходом и отличными результатами.',
+    features: ['ноги полностью', 'руки полностью', 'подмышки', 'глубокое бикини', 'линия живота'],
     mostPopular: false,
-  },
+  }
 ]
 
 export default function PricingSection() {
@@ -68,11 +46,11 @@ export default function PricingSection() {
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-base/7 font-semibold text-indigo-600">Инвестиция в гладкость и комфорт вашей кожи</h2>
           <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-6xl">
-          Доступные цены на лазерную эпиляцию
+            Доступные цены на лазерную эпиляцию
           </p>
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-600 sm:text-xl/8">
-        В центре My Way мы предлагаем прозрачные и честные цены на лазерную эпиляцию. Выберите зону, оформите запись и наслаждайтесь долгосрочным результатом без лишних затрат. Сделайте первый шаг к идеальной коже уже сегодня!
+          В центре My Way мы предлагаем прозрачные и честные цены на лазерную эпиляцию. Выберите зону, оформите запись и наслаждайтесь долгосрочным результатом без лишних затрат. Сделайте первый шаг к идеальной коже уже сегодня!
         </p>
         <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 md:max-w-2xl md:grid-cols-2 lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4">
           {tiers.map((tier) => (
@@ -109,9 +87,9 @@ export default function PricingSection() {
                   'mt-6 block rounded-md px-3 py-2 text-center text-sm/6 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600',
                 )}
               >
-                Buy plan
+                Заказать
               </a>
-              <ul  className="mt-8 space-y-3 text-sm/6 text-gray-600">
+              <ul className="mt-8 space-y-3 text-sm/6 text-gray-600">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex gap-x-3">
                     {feature}
