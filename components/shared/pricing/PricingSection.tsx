@@ -1,6 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
+import { CheckIcon } from 'lucide-react'
 import { useState } from 'react'
 
 const frequencies = [
@@ -50,8 +51,8 @@ export default function PricingSection() {
   const [frequency, setFrequency] = useState(frequencies[0])
 
   return (
-    <div className="bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="py-24 sm:py-32">
+      <div className="container">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-base/7 font-semibold text-indigo-600">Инвестиция в гладкость и комфорт вашей кожи</h2>
           <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-6xl">
@@ -101,7 +102,10 @@ export default function PricingSection() {
               <ul className="mt-8 space-y-3 text-sm/6 text-gray-600">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex gap-x-3">
-                    {feature}
+                    <>
+                      <CheckIcon className="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                      <span>{feature}</span>
+                    </>
                   </li>
                 ))}
               </ul>
@@ -109,6 +113,6 @@ export default function PricingSection() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
