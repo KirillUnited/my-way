@@ -40,14 +40,14 @@ export default function HeroSection() {
           <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative text-center rounded-full px-3 py-1 text-sm/6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
-                <span className='font-bold'>MY_WAY</span> — центр лазерной эпиляции
+                <span className='font-bold'>MY WAY</span> — первый центр лазерной эпиляции с технологией Ice-Cool и системой 3D-сканирования кожи
               </div>
             </div>
             <div className="text-center">
-              <h1 className="text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl text-pretty">
+              <h1 className="text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl">
                 <span className='bg-gradient-to-r from-[#FF1CF7] to-[#b249f8]'>Лазерная эпиляция</span> — гладкая кожа навсегда!
               </h1>
-              <p className="text-balance mt-8 text-lg font-medium text-gray-400 sm:text-xl/8">
+              <p className="text-pretty mt-8 text-lg font-medium text-gray-400 sm:text-xl/8">
                 Современная и безопасная лазерная эпиляция для удаления нежелательных волос на любом участке тела. Запишитесь на сеанс и забудьте о бритье и раздражении!
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">

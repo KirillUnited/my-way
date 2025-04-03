@@ -60,6 +60,10 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">MY WAY</p>
           </NextLink>
         </NavbarBrand>
+
+      </NavbarContent>
+
+      <NavbarContent className="basis-1/5 sm:basis-full" justify="center">
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
