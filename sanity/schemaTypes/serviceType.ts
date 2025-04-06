@@ -1,11 +1,11 @@
-import { FcServices } from 'react-icons/fc'
+import { BrushIcon } from 'lucide-react'
 import { defineField, defineType } from 'sanity'
 
 export const serviceType = defineType({
     name: 'service',
-    title: 'Услуги',
+    title: 'Услуга',
     type: 'document',
-    icon: FcServices,
+    icon: BrushIcon,
     fields: [
         defineField({
             name: 'title',

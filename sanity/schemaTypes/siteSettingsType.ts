@@ -1,24 +1,11 @@
 import { defineType, defineField } from 'sanity'
-import { CogIcon } from '@sanity/icons'
+import { SettingsIcon } from 'lucide-react'
 
 export default defineType({
   name: 'siteSettings',
   title: 'Site Settings',
   type: 'document',
-  icon: CogIcon,
-  preview: {
-    select: {
-      title: 'title',
-      subtitle: 'description'
-    },
-    prepare({ title, subtitle }) {
-      return {
-        title: title || 'Site Settings',
-        subtitle: subtitle || 'Site configuration',
-        media: CogIcon
-      }
-    }
-  },
+  icon: SettingsIcon,
   fields: [
     defineField({
       name: 'title',
@@ -50,13 +37,6 @@ export default defineType({
       of: [
         {
           type: 'object',
-          icon: CogIcon,
-          preview: {
-            select: {
-              title: 'text',
-              subtitle: 'link'
-            }
-          },
           fields: [
             defineField({
               name: 'text',
@@ -79,13 +59,6 @@ export default defineType({
       of: [
         {
           type: 'object',
-          icon: CogIcon,
-          preview: {
-            select: {
-              title: 'platform',
-              subtitle: 'url'
-            }
-          },
           fields: [
             defineField({
               name: 'platform',
@@ -105,8 +78,15 @@ export default defineType({
       name: 'footer',
       title: 'Footer Content',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [{ type: 'block' }],
       description: 'Add footer content using rich text editor'
     })
-  ]
+  ],
+  preview: {
+    prepare() {
+      return {
+        title: "Site Settings",
+      };
+    },
+  },
 })
