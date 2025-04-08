@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 const navigation = [
@@ -57,9 +58,9 @@ export default function HeroSection() {
                 >
                   записаться
                 </a>
-                <a href="#" className="text-sm/6 font-semibold text-white">
+                <Link href="/blog" className="text-sm/6 font-semibold text-white">
                   Узнать больше <span aria-hidden="true">→</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
