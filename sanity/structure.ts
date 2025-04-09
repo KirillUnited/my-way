@@ -18,8 +18,11 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('category').title('Categories'),
       S.documentTypeListItem('author').title('Authors'),
       S.divider(),
+      S.documentTypeListItem("page").title("Pages"),
       S.documentTypeListItem('service').title('Услуги'),
+      S.documentTypeListItem("faq").title("FAQs"),
       ...S.documentTypeListItems().filter(
-        (item) => item.getId() && !['post', 'category', 'author', 'service', 'siteSettings'].includes(item.getId()!),
+        (item) => item.getId() &&
+          !['post', 'category', 'author', 'service', 'siteSettings', "page", "faq"].includes(item.getId()!),
       ),
     ])
