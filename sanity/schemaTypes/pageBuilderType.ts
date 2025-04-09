@@ -9,4 +9,14 @@ export const pageBuilderType = defineType({
         defineArrayMember({ type: "featureList" }),
         defineArrayMember({ type: "faqList" }),
     ],
+    options: {
+        insertMenu: {
+            views: [
+                {
+                    name: "grid",
+                    previewImageUrl: (schemaType) => `/block-previews/${schemaType}.png`,
+                },
+            ],
+        },
+    },
 });

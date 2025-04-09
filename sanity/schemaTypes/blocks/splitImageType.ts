@@ -1,8 +1,10 @@
+import { BlockContentIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export const splitImageType = defineType({
     name: "splitImage",
     type: "object",
+    icon: BlockContentIcon,
     fields: [
         defineField({
             name: "orientation",
@@ -32,7 +34,7 @@ export const splitImageType = defineType({
             return {
                 title,
                 subtitle: "Text and Image",
-                media
+                media: media ?? BlockContentIcon,
             };
         },
     },
