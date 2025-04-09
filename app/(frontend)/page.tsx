@@ -1,11 +1,10 @@
-import HeroSection from "@/components/shared/hero";
-import PricingSection from "@/components/shared/pricing";
+import {HeroSection} from "@/components/shared/hero";
 
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      <PricingSection/>
+      {/* <HeroSection /> */}
+      {/* <PricingSection/> */}
     </>
   );
 }
