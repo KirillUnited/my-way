@@ -1,5 +1,10 @@
 import { defineQuery } from "next-sanity";
 
 export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slug][0] {
-  content[]
+  content[] {
+    _type == "faqList" => @,
+    _type == "featureList" => @,
+    _type == "hero" => @,
+    _type == "splitImage" => @
+  }
 }`);

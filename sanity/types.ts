@@ -541,17 +541,94 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries/page.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0] {  content[]}
+// Query: *[_type == "page" && slug.current == $slug][0] {  content[] {    _type == "faqList" => @,    _type == "featureList" => @,    _type == "hero" => @,    _type == "splitImage" => @  }}
 export type PAGE_QUERYResult = {
   content: Array<{
     _key: string;
-  } & FaqList | {
+    _type: "faqList";
+    title?: string;
+    faqs?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "faq";
+    }>;
+  } | {
     _key: string;
-  } & FeatureList | {
+    _type: "featureList";
+    title?: string;
+    features?: Array<{
+      title?: string;
+      text?: string;
+      _type: "feature";
+      _key: string;
+    }>;
+  } | {
     _key: string;
-  } & Hero | {
+    _type: "hero";
+    title?: string;
+    text?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+  } | {
     _key: string;
-  } & SplitImage> | null;
+    _type: "splitImage";
+    orientation?: "imageLeft" | "imageRight";
+    title?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+  }> | null;
 } | null;
 
 // Source: sanity/lib/queries/post.ts
@@ -616,7 +693,7 @@ export type POST_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"page\" && slug.current == $slug][0] {\n  content[]\n}": PAGE_QUERYResult;
+    "*[_type == \"page\" && slug.current == $slug][0] {\n  content[] {\n    _type == \"faqList\" => @,\n    _type == \"featureList\" => @,\n    _type == \"hero\" => @,\n    _type == \"splitImage\" => @\n  }\n}": PAGE_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)][0...12]{\n  _id, title, slug\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  title, body, mainImage\n}": POST_QUERYResult;
   }

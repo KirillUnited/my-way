@@ -1,9 +1,11 @@
+import { MessageCircleQuestionIcon } from "lucide-react";
 import { defineField, defineType } from "sanity";
 
 export const faqListType = defineType({
     name: "faqList",
     title: "FAQs",
     type: "object",
+    icon: MessageCircleQuestionIcon,
     fields: [
         defineField({
             name: "title",
