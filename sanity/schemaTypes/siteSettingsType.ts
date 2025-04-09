@@ -8,6 +8,11 @@ export default defineType({
   icon: SettingsIcon,
   fields: [
     defineField({
+      name: "homePage",
+      type: "reference",
+      to: [{ type: "page" }],
+    }),
+    defineField({
       name: 'title',
       title: 'Site Title',
       type: 'string',

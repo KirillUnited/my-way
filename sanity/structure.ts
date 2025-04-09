@@ -6,6 +6,8 @@ export const structure: StructureResolver = (S) =>
     .title('My Way')
     .items([
       S.listItem()
+        .id("siteSettings")
+        .schemaType("siteSettings")
         .title('Site Settings')
         .child(
           S.editor()
