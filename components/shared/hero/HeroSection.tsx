@@ -1,81 +1,60 @@
-'use client'
-
+import { urlFor } from '@/sanity/lib/image';
+import { PAGE_QUERYResult } from '@/sanity/types';
+import { Button } from '@heroui/button'
+import { PortableText } from 'next-sanity';
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
 
-const navigation = [
-  { name: 'Главная', href: '#' },
-  { name: 'Цены', href: '#' },
-  { name: 'О нас', href: '#' },
-]
+type HeroProps = Extract<
+  NonNullable<NonNullable<PAGE_QUERYResult>["content"]>[number],
+  { _type: "hero" }
+>;
 
-export default function HeroSection() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+export default function HeroSection({ title, text, image }: HeroProps) {
 
   return (
-    <section className="bg-gray-900 relative">
-
+    <section className="relative">
       <div className="relative isolate overflow-hidden pt-14 after:bg-gradient-to-tr after:from-black after:to-gray-900 after:w-full after:h-full after:block after:inset-0 after:absolute after:-z-0 after:opacity-85">
-        <Image
-          priority
-          alt=""
-          src="/images/hero.jpg"
-          className="absolute inset-0 z-0 size-full object-cover"
-          width={2830}
-          height={1737}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-        >
-          <div
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-            className="relative left-[calc(50%-11rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+        {image ? (
+          <Image
+            priority
+            alt=""
+            src={urlFor(image).width(1600).height(800).url() || ''}
+            className="absolute inset-0 z-0 size-full object-cover"
+            width={1600}
+            height={800}
           />
-        </div>
+        ) : null}
         <div className="relative z-10">
-          <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
+          <div className="container py-32 sm:py-48 lg:py-56">
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative text-center rounded-full px-3 py-1 text-sm/6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
                 <span className='font-bold'>MY WAY</span> — первый центр лазерной эпиляции с технологией Ice-Cool и системой 3D-сканирования кожи
               </div>
             </div>
-            <div className="text-center">
-              <h1 className="text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl">
+            <article className="text-center max-w-4xl flex flex-col gap-8 mx-auto">
+              {/* <h1 className="text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl">
                 <span className='bg-gradient-to-r from-[#FF1CF7] to-[#b249f8]'>Лазерная эпиляция</span> — гладкая кожа навсегда!
               </h1>
-              <p className="text-pretty mt-8 text-lg font-medium text-gray-400 sm:text-xl/8">
+              <p className="text-pretty text-lg font-medium text-gray-400 sm:text-xl/8">
                 Современная и безопасная лазерная эпиляция для удаления нежелательных волос на любом участке тела. Запишитесь на сеанс и забудьте о бритье и раздражении!
-              </p>
-              <div className="mt-10 flex items-center justify-center gap-x-6">
-                <a
-                  href="#"
-                  className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 uppercase"
+              </p> */}
+              {text ? <PortableText value={text} /> : null}
+              <footer className="mt-10 flex items-center justify-center gap-x-6">
+                <Button
+                  className='uppercase font-semibold'
+                  color='primary'
+                  size='md'
+                  radius='none'
                 >
                   записаться
-                </a>
+                </Button>
                 <Link href="/blog" className="text-sm/6 font-semibold text-white">
                   Узнать больше <span aria-hidden="true">→</span>
                 </Link>
-              </div>
-            </div>
+              </footer>
+            </article>
           </div>
-        </div>
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-        >
-          <div
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-            className="relative left-[calc(50%+3rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-          />
         </div>
       </div>
     </section>
