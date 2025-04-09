@@ -1,7 +1,7 @@
 import { defineField, defineType } from "sanity";
 
 export const faqListType = defineType({
-    name: "faqs",
+    name: "faqList",
     title: "FAQs",
     type: "object",
     fields: [
