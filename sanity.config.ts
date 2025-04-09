@@ -30,11 +30,11 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     presentationTool({
-      // resolve: resolve,
+      resolve: resolve,
       previewUrl: {
         previewMode: {
           enable: '/api/draft-mode/enable',
-          // disable: '/api/draft-mode/disable',
+          disable: '/api/draft-mode/disable',
         },
       },
     }),
