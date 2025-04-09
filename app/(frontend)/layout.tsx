@@ -7,6 +7,9 @@ import { Providers } from "@/app/providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity";
+import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { Navbar } from "@/components/navbar";
 import { SanityLive } from "@/sanity/lib/live";
 
@@ -28,7 +31,7 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function FrontendLayout({
+export default async function FrontendLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -61,7 +64,13 @@ export default function FrontendLayout({
             </footer>
           </div>
         </Providers>
-        <SanityLive />
+        <SanityLive />{(await draftMode()).isEnabled && (
+          <>
+            <DisableDraftMode />
+            <VisualEditing />
+          </>
+        )}
+
       </body>
     </html>
   );
