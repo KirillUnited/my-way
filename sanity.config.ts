@@ -14,6 +14,7 @@ import { schema } from './sanity/schemaTypes'
 import { structure } from './sanity/structure'
 import { presentationTool } from 'sanity/presentation'
 import { resolve } from './sanity/presentation/resolve'
+import { seoMetaFields } from 'sanity-plugin-seo';
 
 export default defineConfig({
   basePath: '/studio',
@@ -38,5 +39,6 @@ export default defineConfig({
         },
       },
     }),
+    seoMetaFields()
   ],
 })

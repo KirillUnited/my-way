@@ -6,10 +6,26 @@ export const pageType = defineType({
     title: "Page",
     type: "document",
     icon: DocumentIcon,
+    groups: [{
+        title: 'SEO',
+        name: 'seo'
+    },
+    {
+        title: 'Main',
+        name: 'main',
+        default: true
+    }],
     fields: [
+        defineField({
+            title: "Seo",
+            name: "seo",
+            type: "seoMetaFields",
+            group: "seo"
+        }),
         defineField({
             name: "title",
             type: "string",
+            group: "main"
         }),
         defineField({
             name: "slug",
@@ -17,10 +33,12 @@ export const pageType = defineType({
             options: {
                 source: "title",
             },
+            group: "main"
         }),
         defineField({
             name: "content",
             type: "pageBuilder",
+            group: "main"
         }),
         defineField({
             name: "mainImage",
@@ -28,6 +46,7 @@ export const pageType = defineType({
             options: {
                 hotspot: true,
             },
+            group: "main"
         }),
     ],
     preview: {
