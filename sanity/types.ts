@@ -88,6 +88,7 @@ export type SplitImage = {
 
 export type Hero = {
   _type: "hero";
+  slogan?: string;
   title?: string;
   text?: Array<{
     children?: Array<{
@@ -312,6 +313,7 @@ export type Page = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  seo?: SeoMetaFields;
   title?: string;
   slug?: Slug;
   content?: PageBuilder;
@@ -486,6 +488,85 @@ export type BlockContent = Array<{
   _key: string;
 }>;
 
+export type MetaTag = {
+  _type: "metaTag";
+  metaAttributes?: Array<{
+    _key: string;
+  } & MetaAttribute>;
+};
+
+export type MetaAttribute = {
+  _type: "metaAttribute";
+  attributeKey?: string;
+  attributeType?: "string" | "image";
+  attributeValueImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  attributeValueString?: string;
+};
+
+export type SeoMetaFields = {
+  _type: "seoMetaFields";
+  nofollowAttributes?: boolean;
+  metaTitle?: string;
+  metaDescription?: string;
+  metaImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  seoKeywords?: Array<string>;
+  openGraph?: OpenGraph;
+  additionalMetaTags?: Array<{
+    _key: string;
+  } & MetaTag>;
+  twitter?: Twitter;
+};
+
+export type Twitter = {
+  _type: "twitter";
+  cardType?: string;
+  creator?: string;
+  site?: string;
+  handle?: string;
+};
+
+export type OpenGraph = {
+  _type: "openGraph";
+  url?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  title?: string;
+  description?: string;
+  siteName?: string;
+};
+
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
   top?: number;
@@ -543,7 +624,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | SplitImage | Hero | FeatureList | FaqList | Faq | PageBuilder | Service | SiteSettings | Page | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | SplitImage | Hero | FeatureList | FaqList | Faq | PageBuilder | Service | SiteSettings | Page | Post | Author | Category | Slug | BlockContent | MetaTag | MetaAttribute | SeoMetaFields | Twitter | OpenGraph | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries/page.ts
 // Variable: PAGE_QUERY
@@ -573,6 +654,7 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "hero";
+    slogan?: string;
     title?: string;
     text?: Array<{
       children?: Array<{
@@ -702,6 +784,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "hero";
+      slogan?: string;
       title?: string;
       text?: Array<{
         children?: Array<{
