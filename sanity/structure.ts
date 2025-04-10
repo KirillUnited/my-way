@@ -22,9 +22,10 @@ export const structure: StructureResolver = (S) =>
       S.divider(),
       S.documentTypeListItem("page").title("Pages"),
       S.documentTypeListItem('service').title('Услуги'),
+      S.documentTypeListItem('servicePackage').title('Пакеты услуг'),
       S.documentTypeListItem("faq").title("FAQs"),
       ...S.documentTypeListItems().filter(
         (item) => item.getId() &&
-          !['post', 'category', 'author', 'service', 'siteSettings', "page", "faq"].includes(item.getId()!),
+          !['post', 'category', 'author', 'service', 'siteSettings', "page", "faq", "servicePackage"].includes(item.getId()!),
       ),
     ])

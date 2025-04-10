@@ -6,7 +6,8 @@ import { postType } from './postType'
 import { authorType } from './authorType'
 import siteSettingsType from './siteSettingsType'
 import { serviceType } from './serviceType'
-import { serviceListType } from './blocks/serviceListType'
+import { serviceListType } from './blocks/serviceListType';
+import { servicePackageType } from './servicePackageType';
 import { pageType } from "./pageType";
 import { pageBuilderType } from "./pageBuilderType";
 import { faqType } from "./faqType";
@@ -24,6 +25,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     siteSettingsType, 
     serviceType,
     serviceListType,
+    servicePackageType,
     pageType,
     pageBuilderType,
     faqType,
