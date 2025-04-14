@@ -78,12 +78,12 @@ export default function PricingSection() {
     <section id='pricing' className="py-24 sm:py-32">
       <div className="container">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-base/7 font-semibold text-primary-600">Инвестиция в гладкость и комфорт вашей кожи</h2>
-          <p className="mt-2 text-5xl font-semibold tracking-tight text-balance sm:text-6xl text-foreground-900">
+          <span className="text-base/7 font-semibold text-primary-600">Инвестиция в гладкость и комфорт вашей кожи</span>
+          <h2 className="mt-2 text-3xl md:text-4xl font-semibold tracking-tight text-balance lg:text-5xl text-foreground-900">
             Доступные цены на лазерную эпиляцию
-          </p>
+          </h2>
         </div>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-foreground-800 sm:text-xl/8">
+        <p className="mx-auto mt-6 max-w-2xl text-center font-medium text-pretty text-foreground-800">
           Выберите зону, оформите запись и наслаждайтесь долгосрочным результатом без лишних затрат.
         </p>
         {frequencyControls}

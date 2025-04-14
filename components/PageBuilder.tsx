@@ -4,6 +4,7 @@ import { SplitImage } from "@/components/shared/sections";
 import { FAQs } from "@/components/shared/faq";
 import { PAGE_QUERYResult } from "@/sanity/types";
 import { PricingSection } from "./shared/pricing";
+import { AppointmentSection } from "./shared/appointment";
 
 type PageBuilderProps = {
     content: NonNullable<PAGE_QUERYResult>["content"];
@@ -33,6 +34,9 @@ export function PageBuilder({ content }: PageBuilderProps) {
                         return <div key={String((block as any)._type)}>Block not found: {String((block as any)._type)}</div>;
                 }
             })}
+            {
+                <AppointmentSection />
+            }
         </main>
     );
 }

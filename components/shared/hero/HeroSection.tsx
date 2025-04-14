@@ -43,6 +43,8 @@ export default function HeroSection({ slogan, title, text, image }: HeroProps) {
               {text ? <div className='text-pretty text-lg font-medium text-gray-400 sm:text-xl/8'><PortableText value={text} /></div> : null}
               <footer className="mt-10 flex items-center justify-center gap-x-6">
                 <Button
+                as={Link}
+                  href="/#appointment"
                   className='uppercase font-semibold'
                   color='primary'
                   size='md'
@@ -50,7 +52,7 @@ export default function HeroSection({ slogan, title, text, image }: HeroProps) {
                 >
                   записаться
                 </Button>
-                <Link href="/blog" className="text-sm/6 font-semibold text-white">
+                <Link href="/#pricing" className="text-sm/6 font-semibold text-white">
                   Узнать больше <span aria-hidden="true">→</span>
                 </Link>
               </footer>
