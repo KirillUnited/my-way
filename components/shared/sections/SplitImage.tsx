@@ -3,6 +3,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { PAGE_QUERYResult } from "@/sanity/types";
 import { stegaClean } from "next-sanity";
 import { Button } from "@heroui/button";
+import Link from "next/link";
 
 type SplitImageProps = Extract<
     NonNullable<NonNullable<PAGE_QUERYResult>["content"]>[number],
@@ -23,26 +24,32 @@ export function SplitImage({ title, image, orientation }: SplitImageProps) {
                         alt=""
                     />
                 ) : null}
-                <div className="sm:w-1/2 flex flex-col gap-6">
+                <article className="sm:w-1/2 flex flex-col gap-6">
                     <div className="self-start px-3 py-1 text-sm/6 text-foreground-600 ring-1 ring-foreground/10 hover:ring-foreground/20">
                         О нас
                     </div>
                     {title ? (
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-pretty max-w-3xl text-white">
-                            <span className="bg-gradient-to-r from-[#FF1CF7] to-[#b249f8]">{title}</span>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-pretty max-w-3xl text-foreground-800">
+                            <span className="bg-gradient-to-r from-[#FF1CF7] to-[#b249f8] text-white">{title}</span> - первый центр лазерной эпиляции с технологией Ice-Cool и системой 3D-сканирования кожи
                         </h2>
                     ) : null}
                     <p className="text-foreground-600 text-pretty">
-                        Первый центр лазерной эпиляции с технологией Ice-Cool и системой 3D-сканирования кожи. Сделайте первый шаг к <strong>идеальной коже</strong> уже сегодня!
+                        В центре My Way мы предлагаем прозрачные и честные цены на лазерную эпиляцию. Сделайте первый шаг к <strong>идеальной коже</strong> уже сегодня!
                     </p>
-                    <Button
-                        color="primary"
-                        className="self-start mt-4 uppercase font-semibold"
-                        size="md"
-                        radius="none">
-                        Записаться
-                    </Button>
-                </div>
+                    <footer className="mt-10 flex items-center gap-x-6">
+                        <Button
+                            className='uppercase font-semibold'
+                            color='primary'
+                            size='md'
+                            radius='none'
+                        >
+                            записаться
+                        </Button>
+                        <Link href="/#pricing" className="text-sm/6 font-semibold">
+                            Узнать цены <span aria-hidden="true">→</span>
+                        </Link>
+                    </footer>
+                </article>
             </div>
         </section>
     );

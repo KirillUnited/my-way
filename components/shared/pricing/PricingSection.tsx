@@ -84,7 +84,7 @@ export default function PricingSection() {
           </p>
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-foreground-800 sm:text-xl/8">
-          В центре My Way мы предлагаем прозрачные и честные цены на лазерную эпиляцию. Выберите зону, оформите запись и наслаждайтесь долгосрочным результатом без лишних затрат. Сделайте первый шаг к идеальной коже уже сегодня!
+          Выберите зону, оформите запись и наслаждайтесь долгосрочным результатом без лишних затрат.
         </p>
         {frequencyControls}
         <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 md:max-w-2xl md:grid-cols-2 lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4">
