@@ -27,7 +27,7 @@ export function PageBuilder({ content }: PageBuilderProps) {
                         return <FAQs key={block._key} {...block} />;
                     default:
                         // This is a fallback for when we don't have a block type
-                        return <div>Block not found: {String((block as any)._type)}</div>;
+                        return <div key={String((block as any)._type)}>Block not found: {String((block as any)._type)}</div>;
                 }
             })}
         </main>

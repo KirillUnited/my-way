@@ -19,8 +19,8 @@ export const components: PortableTextComponents = {
                     height="400"
                 />
             ) : null,
-        Highlight: (props) => (
+        highlight: (props) => (
             <span className="bg-gradient-to-r from-[#FF1CF7] to-[#b249f8]">{props.value}</span>
-        )
+        )        
     },
 };
