@@ -7,9 +7,7 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@heroui/navbar";
-import { Kbd } from "@heroui/kbd";
 import { Link } from "@heroui/link";
-import { Input } from "@heroui/input";
 import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
@@ -17,8 +15,6 @@ import clsx from "clsx";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import {
-  GithubIcon,
-  SearchIcon,
   InstagramIcon
 } from "@/components/icons";
 import Image from "next/image";
@@ -79,17 +75,17 @@ export const Navbar = () => {
 
       <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
+          {siteConfig.navItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 color={
-                  index === 2
+                  index === 0
                     ? "primary"
                     : index === siteConfig.navMenuItems.length - 1
                       ? "danger"
                       : "foreground"
                 }
-                href="#"
+                href={`#`}
                 size="lg"
               >
                 {item.label}
