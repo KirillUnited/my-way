@@ -51,6 +51,7 @@ export default function AppointmentSection() {
 
                                 <div className='overflow-hidden shadow-md'>
                                     <iframe
+                                        title={city.name}
                                         src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3079.8947974395387!2d-0.3611132736078366!3d39.471705312613224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6049d8284b7597%3A0xa88e64594982a1f!2sCl%C3%ADnica%20My%20Way!5e0!3m2!1sru!2sam!4v1744663016618!5m2!1sru!2sam`}
                                         width="100%"
                                         height="400"
