@@ -75,7 +75,7 @@ export default function PricingSection() {
   )
 
   return (
-    <section className="py-24 sm:py-32">
+    <section id='pricing' className="py-24 sm:py-32">
       <div className="container">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-base/7 font-semibold text-primary-600">Инвестиция в гладкость и комфорт вашей кожи</h2>

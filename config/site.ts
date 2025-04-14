@@ -10,11 +10,11 @@ export const siteConfig = {
     },
     {
       label: "Цены",
-      href: "/docs",
+      href: "/pricing",
     },
     {
       label: "О нас",
-      href: "/pricing",
+      href: "/about",
     },
     {
       label: "Блог",
