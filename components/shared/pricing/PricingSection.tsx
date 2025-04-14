@@ -116,12 +116,9 @@ export default function PricingSection() {
                 </p>
                 <Button
                   aria-describedby={tier.id}
-                  color={'primary'}
-                  variant={
-                    tier.mostPopular
-                      ? 'solid'
-                      : 'ghost'
-                  }
+                  color={tier.mostPopular
+                    ? 'primary'
+                    : 'secondary'}
                   className='uppercase font-semibold'
                   radius='none'
                 >
