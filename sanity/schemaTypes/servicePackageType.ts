@@ -3,6 +3,7 @@ export const servicePackageType = defineType({
   name: 'servicePackage',
   title: 'Service Package',
   type: 'document',
+  icon: () => '📦', // Package icon, you can replace it with your own logi
   fields: [
     defineField({
       name: 'name',

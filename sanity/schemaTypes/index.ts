@@ -15,6 +15,7 @@ import { faqListType } from "./blocks/faqListType";
 import { featureListType } from "./blocks/featureListType";
 import { heroType } from "./blocks/heroType";
 import { splitImageType } from "./blocks/splitImageType";
+import { servicePackageListType } from './blocks/servicePackageListType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [    
@@ -26,6 +27,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     serviceType,
     serviceListType,
     servicePackageType,
+    servicePackageListType,
     pageType,
     pageBuilderType,
     faqType,

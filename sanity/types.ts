@@ -202,11 +202,77 @@ export type PageBuilder = Array<{
   _key: string;
 } & Hero | {
   _key: string;
+} & ServiceList | {
+  _key: string;
+} & ServicePackageList | {
+  _key: string;
 } & SplitImage | {
   _key: string;
 } & FeatureList | {
   _key: string;
 } & FaqList>;
+
+export type ServicePackageList = {
+  _type: "servicePackageList";
+  title?: string;
+  servicePackages?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "servicePackage";
+  }>;
+};
+
+export type ServicePackage = {
+  _id: string;
+  _type: "servicePackage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  description?: string;
+  price?: number;
+  sessions?: number;
+  bodyAreas?: Array<string>;
+  duration?: number;
+  services?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "service";
+  }>;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  isPopular?: boolean;
+  slug?: Slug;
+};
+
+export type ServiceList = {
+  _type: "serviceList";
+  isActive?: boolean;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  services?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "service";
+  }>;
+};
 
 export type Service = {
   _id: string;
@@ -624,11 +690,11 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | SplitImage | Hero | FeatureList | FaqList | Faq | PageBuilder | Service | SiteSettings | Page | Post | Author | Category | Slug | BlockContent | MetaTag | MetaAttribute | SeoMetaFields | Twitter | OpenGraph | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | SplitImage | Hero | FeatureList | FaqList | Faq | PageBuilder | ServicePackageList | ServicePackage | ServiceList | Service | SiteSettings | Page | Post | Author | Category | Slug | BlockContent | MetaTag | MetaAttribute | SeoMetaFields | Twitter | OpenGraph | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries/page.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0] {  content[] {    _type == "faqList" => @,    _type == "featureList" => @,    _type == "hero" => @,    _type == "splitImage" => @  }}
+// Query: *[_type == "page" && slug.current == $slug][0] {  content[] {    _type == "faqList" => @,    _type == "featureList" => @,      _type == "serviceList" => @,      _type == "servicePackageList" => @,    _type == "hero" => @,    _type == "splitImage" => @  }}
 export type PAGE_QUERYResult = {
   content: Array<{
     _key: string;
@@ -701,6 +767,31 @@ export type PAGE_QUERYResult = {
     };
   } | {
     _key: string;
+    _type: "serviceList";
+    isActive?: boolean;
+    title?: string;
+    subtitle?: string;
+    description?: string;
+    services?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "service";
+    }>;
+  } | {
+    _key: string;
+    _type: "servicePackageList";
+    title?: string;
+    servicePackages?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "servicePackage";
+    }>;
+  } | {
+    _key: string;
     _type: "splitImage";
     orientation?: "imageLeft" | "imageRight";
     title?: string;
@@ -719,7 +810,7 @@ export type PAGE_QUERYResult = {
   }> | null;
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "siteSettings"][0]{  homePage->{    content[] {            _type == "hero" => @,      _type == "splitImage" => @,      _type == "featureList" => @,      _type == "faqList" => {        _key,        _type,            title,    description,    isActive,    link,    subtitle,        faqs[]->,      },    }  }}
+// Query: *[_id == "siteSettings"][0]{  homePage->{    content[] {            _type == "hero" => @,      _type == "splitImage" => @,      _type == "featureList" => @,      _type == "serviceList" => @,      _type == "servicePackageList" => @,      _type == "faqList" => {        _key,        _type,            title,    description,    isActive,    link,    subtitle,        faqs[]->,      },    }  }}
 export type HOME_PAGE_QUERYResult = {
   homePage: null;
 } | {
@@ -831,6 +922,31 @@ export type HOME_PAGE_QUERYResult = {
       };
     } | {
       _key: string;
+      _type: "serviceList";
+      isActive?: boolean;
+      title?: string;
+      subtitle?: string;
+      description?: string;
+      services?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "service";
+      }>;
+    } | {
+      _key: string;
+      _type: "servicePackageList";
+      title?: string;
+      servicePackages?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "servicePackage";
+      }>;
+    } | {
+      _key: string;
       _type: "splitImage";
       orientation?: "imageLeft" | "imageRight";
       title?: string;
@@ -908,13 +1024,47 @@ export type POST_QUERYResult = {
   } | null;
 } | null;
 
+// Source: sanity/lib/queries/service.ts
+// Variable: serviceQuery
+// Query: *[_type == "service"]{  _id,  _createdAt,  name,  "slug": slug.current,  "image": image.asset->url,  url,  content,  description,  price,  duration,  category->{    name,    "slug": slug.current  }}
+export type ServiceQueryResult = Array<{
+  _id: string;
+  _createdAt: string;
+  name: null;
+  slug: string | null;
+  image: string | null;
+  url: null;
+  content: null;
+  description: string | null;
+  price: string | null;
+  duration: null;
+  category: null;
+}>;
+// Variable: serviceBySlugQuery
+// Query: *[_type == "service" && slug.current == $slug][0]{  _id,  _createdAt,  name,  "slug": slug.current,  "image": image.asset->url,  url,  content,  description,  price,  duration,  category->{    name,    "slug": slug.current  }}
+export type ServiceBySlugQueryResult = {
+  _id: string;
+  _createdAt: string;
+  name: null;
+  slug: string | null;
+  image: string | null;
+  url: null;
+  content: null;
+  description: string | null;
+  price: string | null;
+  duration: null;
+  category: null;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"page\" && slug.current == $slug][0] {\n  content[] {\n    _type == \"faqList\" => @,\n    _type == \"featureList\" => @,\n    _type == \"hero\" => @,\n    _type == \"splitImage\" => @\n  }\n}": PAGE_QUERYResult;
-    "*[_id == \"siteSettings\"][0]{\n  homePage->{\n    content[] {      \n      _type == \"hero\" => @,\n      _type == \"splitImage\" => @,\n      _type == \"featureList\" => @,\n      _type == \"faqList\" => {\n        _key,\n        _type,\n        \n    title,\n    description,\n    isActive,\n    link,\n    subtitle\n,\n        faqs[]->,\n      },\n    }\n  }\n}": HOME_PAGE_QUERYResult;
+    "*[_type == \"page\" && slug.current == $slug][0] {\n  content[] {\n    _type == \"faqList\" => @,\n    _type == \"featureList\" => @,\n      _type == \"serviceList\" => @,\n      _type == \"servicePackageList\" => @,\n    _type == \"hero\" => @,\n    _type == \"splitImage\" => @\n  }\n}": PAGE_QUERYResult;
+    "*[_id == \"siteSettings\"][0]{\n  homePage->{\n    content[] {      \n      _type == \"hero\" => @,\n      _type == \"splitImage\" => @,\n      _type == \"featureList\" => @,\n      _type == \"serviceList\" => @,\n      _type == \"servicePackageList\" => @,\n      _type == \"faqList\" => {\n        _key,\n        _type,\n        \n    title,\n    description,\n    isActive,\n    link,\n    subtitle\n,\n        faqs[]->,\n      },\n    }\n  }\n}": HOME_PAGE_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)][0...12]{\n  _id, title, slug\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  title, body, mainImage\n}": POST_QUERYResult;
+    "*[_type == \"service\"]{\n  _id,\n  _createdAt,\n  name,\n  \"slug\": slug.current,\n  \"image\": image.asset->url,\n  url,\n  content,\n  description,\n  price,\n  duration,\n  category->{\n    name,\n    \"slug\": slug.current\n  }\n}": ServiceQueryResult;
+    "*[_type == \"service\" && slug.current == $slug][0]{\n  _id,\n  _createdAt,\n  name,\n  \"slug\": slug.current,\n  \"image\": image.asset->url,\n  url,\n  content,\n  description,\n  price,\n  duration,\n  category->{\n    name,\n    \"slug\": slug.current\n  }\n}": ServiceBySlugQueryResult;
   }
 }

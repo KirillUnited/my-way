@@ -3,6 +3,7 @@ import { FeaturesSection } from "@/components/shared/feature";
 import { SplitImage } from "@/components/shared/sections";
 import { FAQs } from "@/components/shared/faq";
 import { PAGE_QUERYResult } from "@/sanity/types";
+import { PricingSection } from "./shared/pricing";
 
 type PageBuilderProps = {
     content: NonNullable<PAGE_QUERYResult>["content"];
@@ -19,6 +20,8 @@ export function PageBuilder({ content }: PageBuilderProps) {
                 switch (block._type) {
                     case "hero":
                         return <HeroSection key={block._key} {...block} />;
+                    case "servicePackageList":
+                        return <PricingSection key={block._key} {...block} />;
                     case "featureList":
                         return <FeaturesSection key={block._key} {...block} />;
                     case "splitImage":
