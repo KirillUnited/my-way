@@ -12,7 +12,7 @@ type SplitImageProps = Extract<
 export function SplitImage({ title, image, orientation }: SplitImageProps) {
     return (
         <section className="relative">
-            <div className="container flex flex-col sm:flex-row items-center gap-8 py-16 sm:data-[orientation='imageRight']:flex-row-reverse"
+            <div className="container flex flex-col sm:flex-row items-center gap-8 sm:gap-16 py-16 sm:data-[orientation='imageRight']:flex-row-reverse"
                 data-orientation={stegaClean(orientation) || "imageLeft"}>
                 {image ? (
                     <Image

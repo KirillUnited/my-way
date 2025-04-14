@@ -12,6 +12,7 @@ import { VisualEditing } from "next-sanity";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { Navbar } from "@/components/navbar";
 import { SanityLive } from "@/sanity/lib/live";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -51,17 +52,7 @@ export default async function FrontendLayout({
             <main className="flex-grow">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://heroui.com?utm_source=next-app-template"
-                title="heroui.com homepage"
-              >
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">HeroUI</p>
-              </Link>
-            </footer>
+            <Footer />
           </div>
         </Providers>
         <SanityLive />{(await draftMode()).isEnabled && (
