@@ -14,7 +14,7 @@ export default function HeroSection({ slogan, title, text, image }: HeroProps) {
 
   return (
     <section className="relative">
-      <div className="relative isolate overflow-hidden pt-14 after:bg-gradient-to-tr after:from-black after:to-gray-900 after:w-full after:h-full after:block after:inset-0 after:absolute after:-z-0 after:opacity-85">
+      <div className="relative isolate overflow-hidden after:bg-gradient-to-tr after:from-black after:to-gray-900 after:w-full after:h-full after:block after:inset-0 after:absolute after:-z-0 after:opacity-85">
         {image ? (
           <Image
             priority
@@ -40,7 +40,7 @@ export default function HeroSection({ slogan, title, text, image }: HeroProps) {
               {/* <p className="text-pretty text-lg font-medium text-gray-400 sm:text-xl/8">
                 Современная и безопасная лазерная эпиляция для удаления нежелательных волос на любом участке тела. Запишитесь на сеанс и забудьте о бритье и раздражении!
               </p> */}
-              {text ? <PortableText value={text} /> : null}
+              {text ? <div className='text-pretty text-lg font-medium text-gray-400 sm:text-xl/8'><PortableText value={text} /></div> : null}
               <footer className="mt-10 flex items-center justify-center gap-x-6">
                 <Button
                   className='uppercase font-semibold'

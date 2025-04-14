@@ -1,6 +1,7 @@
 'use client'
 
 import { Button, ButtonGroup } from '@heroui/button'
+import { Card, CardBody, CardHeader } from '@heroui/card'
 import clsx from 'clsx'
 import { CheckIcon } from 'lucide-react'
 import { useState } from 'react'
@@ -62,11 +63,10 @@ export default function PricingSection() {
         <Button
           key={freq.value}
           onPress={() => handleFrequencyChange(freq)}
-          color={`${
-            frequency.value === freq.value
-              ? 'primary'
-              : 'default'
-          }`}
+          color={`${frequency.value === freq.value
+            ? 'primary'
+            : 'default'
+            }`}
         >
           {freq.label}
         </Button>
@@ -89,52 +89,56 @@ export default function PricingSection() {
         {frequencyControls}
         <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 md:max-w-2xl md:grid-cols-2 lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4">
           {tiers.map((tier) => (
-            <div
+            <Card
+              radius='none'
               key={tier.id}
               className={clsx(
-                tier.mostPopular ? 'ring-2 ring-indigo-600' : 'ring-1 ring-gray-200',
-                'rounded-3xl p-8',
+                tier.mostPopular ? 'ring-2 ring-primary' : 'ring-1 ring-gray-200',
               )}
             >
-              <h3
-                id={tier.id}
-                className={clsx(
-                  tier.mostPopular ? 'text-indigo-600' : 'text-gray-900',
-                  'text-lg/8 font-semibold',
-                )}
-              >
-                {tier.name}
-              </h3>
-              <p className="mt-4 text-sm/6 text-gray-600">{tier.description}</p>
-              <p className="mt-6 flex items-baseline gap-x-1">
-                <span className="text-4xl font-semibold tracking-tight text-gray-900">
-                  {tier?.price[frequency.value as keyof typeof tier.price] || '$0'}
-                </span>
-                <span className="text-sm/6 font-semibold text-gray-600">{frequency.priceSuffix}</span>
-              </p>
-              <a
-                href={tier.href}
-                aria-describedby={tier.id}
-                className={clsx(
-                  tier.mostPopular
-                    ? 'bg-indigo-600 text-white shadow-xs hover:bg-indigo-500'
-                    : 'text-indigo-600 ring-1 ring-indigo-200 ring-inset hover:ring-indigo-300',
-                  'mt-6 block rounded-md px-3 py-2 text-center text-sm/6 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600',
-                )}
-              >
-                Заказать
-              </a>
-              <ul className="mt-8 space-y-3 text-sm/6 text-gray-600">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex gap-x-3">
-                    <>
-                      <CheckIcon className="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
-                      <span>{feature}</span>
-                    </>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <CardHeader className='flex-col gap-3 items-stretch'>
+                <h3
+                  id={tier.id}
+                  className={clsx(
+                    tier.mostPopular ? 'text-primary font-bold text-2xl/8' : 'text-foreground-900 font-semibold text-lg/8',
+                  )}
+                >
+                  {tier.name}
+                </h3>
+                <p className="text-sm/6 text-foreground-600">{tier.description}</p>
+              </CardHeader>
+              <CardBody className='gap-4'>
+                <p className=" flex items-baseline gap-x-1">
+                  <span className="text-4xl font-semibold tracking-tight text-foreground-900">
+                    {tier?.price[frequency.value as keyof typeof tier.price] || '$0'}
+                  </span>
+                  <span className="text-sm/6 font-semibold text-foreground-600">{frequency.priceSuffix}</span>
+                </p>
+                <Button
+                  aria-describedby={tier.id}
+                  color={'primary'}
+                  variant={
+                    tier.mostPopular
+                      ? 'solid'
+                      : 'ghost'
+                  }
+                  className='uppercase font-semibold'
+                  radius='none'
+                >
+                  Заказать
+                </Button>
+                <ul className="mt-4 space-y-3 text-sm/6 text-foreground-600">
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex gap-x-3">
+                      <>
+                        <CheckIcon className="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                        <span>{feature}</span>
+                      </>
+                    </li>
+                  ))}
+                </ul>
+              </CardBody>
+            </Card>
           ))}
         </div>
       </div>
