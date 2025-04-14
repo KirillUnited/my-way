@@ -1,5 +1,6 @@
 'use client'
 
+import { Button, ButtonGroup } from '@heroui/button'
 import clsx from 'clsx'
 import { CheckIcon } from 'lucide-react'
 import { useState } from 'react'
@@ -50,18 +51,42 @@ const tiers = [
 export default function PricingSection() {
   const [frequency, setFrequency] = useState(frequencies[0])
 
+  // Display frequency selection controls
+  const handleFrequencyChange = (newFrequency: typeof frequencies[0]) => {
+    setFrequency(newFrequency)
+  }
+
+  const frequencyControls = (
+    <ButtonGroup radius='none' className='w-full mt-10'>
+      {frequencies.map((freq) => (
+        <Button
+          key={freq.value}
+          onPress={() => handleFrequencyChange(freq)}
+          color={`${
+            frequency.value === freq.value
+              ? 'primary'
+              : 'default'
+          }`}
+        >
+          {freq.label}
+        </Button>
+      ))}
+    </ButtonGroup>
+  )
+
   return (
     <section className="py-24 sm:py-32">
       <div className="container">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-base/7 font-semibold text-indigo-600">Инвестиция в гладкость и комфорт вашей кожи</h2>
-          <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-6xl">
+          <h2 className="text-base/7 font-semibold text-primary-600">Инвестиция в гладкость и комфорт вашей кожи</h2>
+          <p className="mt-2 text-5xl font-semibold tracking-tight text-balance sm:text-6xl text-foreground-900">
             Доступные цены на лазерную эпиляцию
           </p>
         </div>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-600 sm:text-xl/8">
+        <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-foreground-800 sm:text-xl/8">
           В центре My Way мы предлагаем прозрачные и честные цены на лазерную эпиляцию. Выберите зону, оформите запись и наслаждайтесь долгосрочным результатом без лишних затрат. Сделайте первый шаг к идеальной коже уже сегодня!
         </p>
+        {frequencyControls}
         <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 md:max-w-2xl md:grid-cols-2 lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4">
           {tiers.map((tier) => (
             <div
