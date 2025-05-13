@@ -93,14 +93,14 @@ export default function PricingSection() {
               radius='none'
               key={tier.id}
               className={clsx(
-                tier.mostPopular ? 'ring-2 ring-primary' : 'ring-1 ring-gray-200',
+                tier.mostPopular ? 'ring-2 ring-secondary' : 'ring-1 ring-gray-200',
               )}
             >
               <CardHeader className='flex-col gap-3 items-stretch'>
                 <h3
                   id={tier.id}
                   className={clsx(
-                    tier.mostPopular ? 'text-primary font-bold text-2xl/8' : 'text-foreground-900 font-semibold text-lg/8',
+                    tier.mostPopular ? 'text-secondary font-bold text-2xl/8' : 'text-foreground-900 font-semibold text-lg/8',
                   )}
                 >
                   {tier.name}
@@ -117,8 +117,8 @@ export default function PricingSection() {
                 <Button
                   aria-describedby={tier.id}
                   color={tier.mostPopular
-                    ? 'primary'
-                    : 'secondary'}
+                    ? 'secondary'
+                    : 'primary'}
                   className='uppercase font-semibold'
                   radius='none'
                 >

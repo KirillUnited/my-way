@@ -35,7 +35,7 @@ export default function HeroSection({ slogan, title, text, image }: HeroProps) {
             </div>
             <article className="text-center max-w-4xl flex flex-col gap-8 mx-auto">
               <h1 className="text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl">
-                <span className='bg-gradient-to-r from-[#FF1CF7] to-[#b249f8]'>Лазерная эпиляция</span> — гладкая кожа навсегда!
+                <span className='brand-gradient'>Лазерная эпиляция</span> — гладкая кожа навсегда!
               </h1>
               {/* <p className="text-pretty text-lg font-medium text-gray-400 sm:text-xl/8">
                 Современная и безопасная лазерная эпиляция для удаления нежелательных волос на любом участке тела. Запишитесь на сеанс и забудьте о бритье и раздражении!

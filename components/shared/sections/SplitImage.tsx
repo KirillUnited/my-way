@@ -30,7 +30,7 @@ export function SplitImage({ title, image, orientation }: SplitImageProps) {
                     </div>
                     {title ? (
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-pretty max-w-3xl text-foreground-800">
-                            <span className="bg-gradient-to-r from-[#FF1CF7] to-[#b249f8] text-white">{title}</span> - первый центр лазерной эпиляции с технологией Ice-Cool и системой 3D-сканирования кожи
+                            <span className="brand-gradient">{title}</span> - первый центр лазерной эпиляции с технологией Ice-Cool и системой 3D-сканирования кожи
                         </h2>
                     ) : null}
                     <p className="text-foreground-600 text-pretty">
